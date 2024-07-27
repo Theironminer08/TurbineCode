@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dumbass Page</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: black;
+            color: white;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+            position: relative;
+        }
+        h1 {
+            font-size: 3em;
+            position: relative;
+            z-index: 10;
+        }
+        .nyan-cat {
+            position: absolute;
+            width: 100px;
+            height: auto;
+            transition: transform 0.1s linear;
+        }
+    </style>
+</head>
+<body>
+    <h1>I'm a freacking dumbash who modifies my friends code so it doesnt get flagged!</h1>
+    <div id="nyan-cats-container"></div>
+    <audio autoplay loop>
+        <source src="https://www.nyan.cat/music/original.mp3" type="audio/mpeg">
+    </audio>
+    <script>
+        function getRandomColor() {
+            const letters = '0123456789ABCDEF';
+            let color = '#';
+            for (let i = 0; i < 6; i++) {
+                color += letters[Math.floor(Math.random() * 16)];
+            }
+            return color;
+        }
+
+        function getRandomFontSize() {
+            return `${Math.floor(Math.random() * 50) + 20}px`;
+        }
+
+        function flashTextAndBackground() {
+            const h1 = document.querySelector('h1');
+            const body = document.body;
+            setInterval(() => {
+                h1.style.color = getRandomColor();
+                h1.style.fontSize = getRandomFontSize();
+                body.style.backgroundColor = getRandomColor();
+            }, 100);
+        }
+
+        function createNyanCats(numCats) {
+            const container = document.getElementById('nyan-cats-container');
+            for (let i = 0; i < numCats; i++) {
+                const nyanCat = document.createElement('img');
+                nyanCat.src = 'https://tenor.com/view/kerbal-space-program-wide-walking-kerbonaut-gif-22793008';
+                nyanCat.className = 'nyan-cat';
+                nyanCat.style.top = `${Math.random() * window.innerHeight}px`;
+                nyanCat.style.left = `${Math.random() * window.innerWidth}px`;
+                container.appendChild(nyanCat);
+                animateNyanCat(nyanCat);
+            }
+        }
+
+        function animateNyanCat(nyanCat) {
+            let x = parseFloat(nyanCat.style.left);
+            let y = parseFloat(nyanCat.style.top);
+            let dx = (Math.random() - 0.5) * 4;
+            let dy = (Math.random() - 0.5) * 4;
+            const updatePosition = () => {
+                x += dx;
+                y += dy;
+                if (x + nyanCat.width > window.innerWidth || x < 0) {
+                    dx = -dx;
+                }
+                if (y + nyanCat.height > window.innerHeight || y < 0) {
+                    dy = -dy;
+                }
+                nyanCat.style.transform = `translate(${x}px, ${y}px)`;
+                requestAnimationFrame(updatePosition);
+            };
+            updatePosition();
+        }
+
+        flashTextAndBackground();
+        createNyanCats(500);
+    </script>
+</body>
+</html>
