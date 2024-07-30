@@ -21,7 +21,7 @@ PAGE = """\
 <title>Engineering Websocket Demo</title>
 </head>
 <body>
-<h1>Picamera2 MJPEG Streaming Demo</h1>
+<h1>Engineering Websocket Demo</h1>
 <img src="stream.mjpg" width="640" height="480" />
 </body>
 </html>
