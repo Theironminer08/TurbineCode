@@ -18,7 +18,7 @@ from picamera2.outputs import FileOutput
 PAGE = """\
 <html>
 <head>
-<title>picamera2 MJPEG streaming demo</title>
+<title>Engineering Websocket Demo</title>
 </head>
 <body>
 <h1>Picamera2 MJPEG Streaming Demo</h1>
